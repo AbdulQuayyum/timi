@@ -1,6 +1,6 @@
 import { Outlet, ScrollRestoration } from 'react-router';
 
-import { Footer, Header } from '@/components';
+import { BottomNavigation, Footer, Header } from '@/components';
 import ScrollToTop from '@/utilities/ScrollToTop';
 import BackToTop from '@/utilities/BackToTop';
 
@@ -14,6 +14,7 @@ const GeneralLayout = () => {
                     <ScrollRestoration />
                     <Outlet />
                 </div>
+                <BottomNavigation />
                 <Footer />
             </div>
             <BackToTop />

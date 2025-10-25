@@ -25,7 +25,7 @@ const BackToTop = () => {
         hover: {
             opacity: 1,
             scale: 1.15,
-            backgroundColor: "#1F1F1F",
+            backgroundColor: "#FF0000",
             transition: {
                 type: "spring",
                 stiffness: 200,

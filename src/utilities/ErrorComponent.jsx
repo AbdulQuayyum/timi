@@ -207,10 +207,211 @@ const ErrorPage = () => {
 };
 
 const Loader = () => {
+    const name = "TIMI YOUNG";
+
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1,
+                delayChildren: 0.2
+            }
+        }
+    };
+
+    const letterVariants = {
+        hidden: {
+            opacity: 0,
+            y: 50,
+            rotateX: -90,
+            scale: 0
+        },
+        visible: {
+            opacity: 1,
+            y: 0,
+            rotateX: 0,
+            scale: 1,
+            transition: {
+                type: "spring",
+                stiffness: 200,
+                damping: 12
+            }
+        }
+    };
+
+    const glowVariants = {
+        animate: {
+            boxShadow: [
+                "0 0 20px rgba(255, 0, 0, 0.3)",
+                "0 0 40px rgba(255, 0, 0, 0.6)",
+                "0 0 20px rgba(255, 0, 0, 0.3)"
+            ],
+            transition: {
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+            }
+        }
+    };
+
+    const dotVariants = {
+        animate: (custom) => ({
+            scale: [1, 1.5, 1],
+            opacity: [0.3, 0.8, 0.3],
+            transition: {
+                duration: 1.5,
+                repeat: Infinity,
+                delay: custom * 0.2,
+                ease: "easeInOut"
+            }
+        })
+    };
+
+    const waveVariants = {
+        animate: {
+            y: [0, -10, 0],
+            transition: {
+                duration: 1,
+                repeat: Infinity,
+                ease: "easeInOut"
+            }
+        }
+    };
+
     return (
-        <div className="flex min-h-screen w-full items-center justify-center bg-[#F7F7F7]">
-            <div className="text-center">
-                <Refresh2 className='h-5 w-5 animate-spin text-[#1F1F1F]' />
+        <div className="flex min-h-screen w-full items-center justify-center bg-gradient-to-br from-[#F7F7F7] via-[#FFFFFF] to-[#F7F7F7] overflow-hidden">
+            <div className="relative">
+                {/* Background animated dots */}
+                <motion.div
+                    className="absolute w-2 h-2 rounded-full bg-[#FF0000]/30 -top-20 -left-20"
+                    variants={dotVariants}
+                    animate="animate"
+                    custom={0}
+                />
+                <motion.div
+                    className="absolute w-3 h-3 rounded-full bg-[#FF0000]/20 -top-10 right-10"
+                    variants={dotVariants}
+                    animate="animate"
+                    custom={1}
+                />
+                <motion.div
+                    className="absolute w-2 h-2 rounded-full bg-[#1F1F1F]/20 -bottom-16 -right-16"
+                    variants={dotVariants}
+                    animate="animate"
+                    custom={2}
+                />
+                <motion.div
+                    className="absolute w-2 h-2 rounded-full bg-[#FF0000]/40 bottom-0 -left-10"
+                    variants={dotVariants}
+                    animate="animate"
+                    custom={3}
+                />
+
+                {/* Main content */}
+                <div className="text-center space-y-8">
+                    {/* Name animation */}
+                    <motion.div
+                        className="flex items-center justify-center gap-1 sm:gap-2"
+                        variants={containerVariants}
+                        initial="hidden"
+                        animate="visible"
+                    >
+                        {name.split('').map((char, index) => (
+                            <motion.span
+                                key={index}
+                                variants={letterVariants}
+                                className={`text-5xl sm:text-7xl font-bold ${char === ' ' ? 'w-4' : ''
+                                    } ${index < 4 ? 'text-[#1F1F1F]' : 'text-[#FF0000]'}`}
+                                whileHover={{
+                                    scale: 1.2,
+                                    rotate: [0, -10, 10, 0],
+                                    transition: { duration: 0.3 }
+                                }}
+                            >
+                                {char === ' ' ? '\u00A0' : char}
+                            </motion.span>
+                        ))}
+                    </motion.div>
+
+                    {/* Loading indicator */}
+                    <motion.div
+                        className="flex items-center justify-center gap-2"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 1 }}
+                    >
+                        {[0, 1, 2].map((index) => (
+                            <motion.div
+                                key={index}
+                                className="w-3 h-3 rounded-full bg-[#FF0000]"
+                                variants={waveVariants}
+                                animate="animate"
+                                transition={{
+                                    delay: index * 0.15,
+                                    duration: 0.6,
+                                    repeat: Infinity,
+                                    ease: "easeInOut"
+                                }}
+                            />
+                        ))}
+                    </motion.div>
+
+                    {/* Loading text */}
+                    <motion.p
+                        className="text-[#1F1F1F]/60 text-sm font-medium tracking-wider"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 1.2 }}
+                    >
+                        LOADING...
+                    </motion.p>
+
+                    {/* Bottom line animation */}
+                    <motion.div
+                        className="w-32 h-1 mx-auto rounded-full bg-gradient-to-r from-transparent via-[#FF0000] to-transparent"
+                        initial={{ scaleX: 0, opacity: 0 }}
+                        animate={{
+                            scaleX: [0, 1, 0],
+                            opacity: [0, 1, 0]
+                        }}
+                        transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                        }}
+                    />
+                </div>
+
+                {/* Rotating ring */}
+                <motion.div
+                    className="absolute inset-0 -z-10"
+                    animate={{
+                        rotate: 360
+                    }}
+                    transition={{
+                        duration: 8,
+                        repeat: Infinity,
+                        ease: "linear"
+                    }}
+                >
+                    <div className="absolute top-1/2 left-1/2 w-64 h-64 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-dashed border-[#FF0000]/20" />
+                </motion.div>
+
+                {/* Inner rotating ring */}
+                <motion.div
+                    className="absolute inset-0 -z-10"
+                    animate={{
+                        rotate: -360
+                    }}
+                    transition={{
+                        duration: 6,
+                        repeat: Infinity,
+                        ease: "linear"
+                    }}
+                >
+                    <div className="absolute top-1/2 left-1/2 w-48 h-48 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[#1F1F1F]/10" />
+                </motion.div>
             </div>
         </div>
     );
