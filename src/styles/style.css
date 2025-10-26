@@ -1,8 +1,96 @@
 @font-face {
     font-family: 'Youth';
-    src: url('../assets/fonts/Youth.otf') format('truetype');
-    font-weight: normal;
+    src: url('../assets/fonts/Youth Black.otf') format('opentype');
+    font-weight: 900;
     font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Youth';
+    src: url('../assets/fonts/Youth Black Italic.otf') format('opentype');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Youth';
+    src: url('../assets/fonts/Youth Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Youth';
+    src: url('../assets/fonts/Youth Bold Italic.otf') format('opentype');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Youth';
+    src: url('../assets/fonts/Youth Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Youth';
+    src: url('../assets/fonts/Youth Medium Italic.otf') format('opentype');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Youth';
+    src: url('../assets/fonts/Youth Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Youth';
+    src: url('../assets/fonts/Youth Italic.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Youth';
+    src: url('../assets/fonts/Youth Light.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Youth';
+    src: url('../assets/fonts/Youth Light Italic.otf') format('opentype');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Youth';
+    src: url('../assets/fonts/Youth Thin.otf') format('opentype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Youth';
+    src: url('../assets/fonts/Youth Thin Italic.otf') format('opentype');
+    font-weight: 100;
+    font-style: italic;
     font-display: swap;
 }
 
