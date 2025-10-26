@@ -31,25 +31,26 @@ const Header = () => {
                 style={{ opacity: headerOpacity }}
                 className={`flex fixed z-50 top-4 items-center w-full justify-between gap-4 sm:gap-10 max-w-[1288px] rounded-full py-3.5 px-4 transition-all duration-300 ${scrolled ? 'bg-white backdrop-blur-lg' : ' bg-transparent'}`}
             >
-                <motion.img
-                    src="/logo.png"
-                    className="h-14 w-14"
-                    alt="logo"
-                    initial={{ scale: 0, rotate: -180 }}
-                    animate={{ scale: 1, rotate: 0 }}
-                    transition={{
-                        type: "spring",
-                        stiffness: 200,
-                        damping: 15,
-                        delay: 0.3
-                    }}
-                    whileHover={{
-                        scale: 1.1,
-                        rotate: 5,
-                        transition: { duration: 0.2 }
-                    }}
-                />
-
+                <Link to={routes.home}>
+                    <motion.img
+                        src="/logo.png"
+                        className="h-14 w-14"
+                        alt="logo"
+                        initial={{ scale: 0, rotate: -180 }}
+                        animate={{ scale: 1, rotate: 0 }}
+                        transition={{
+                            type: "spring",
+                            stiffness: 200,
+                            damping: 15,
+                            delay: 0.3
+                        }}
+                        whileHover={{
+                            scale: 1.1,
+                            rotate: 5,
+                            transition: { duration: 0.2 }
+                        }}
+                    />
+                </Link>
                 <motion.div
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
