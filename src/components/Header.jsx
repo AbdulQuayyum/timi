@@ -29,7 +29,7 @@ const Header = () => {
                     delay: 0.1
                 }}
                 style={{ opacity: headerOpacity }}
-                className={`flex fixed z-50 top-4 items-center w-full justify-between gap-4 sm:gap-10 max-w-[1288px] rounded-full py-3.5 px-4 sm:px-8 transition-all duration-300 ${scrolled ? 'bg-white backdrop-blur-lg' : ' bg-transparent'}`}
+                className={`flex fixed z-50 top-4 items-center w-full justify-between gap-4 sm:gap-10 max-w-[1288px] rounded-full py-3.5 px-4 transition-all duration-300 ${scrolled ? 'bg-white backdrop-blur-lg' : ' bg-transparent'}`}
             >
                 <motion.img
                     src="/logo.png"

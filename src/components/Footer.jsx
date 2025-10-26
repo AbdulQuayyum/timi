@@ -17,7 +17,7 @@ const Footer = () => {
             icon: Whatsapp,
         },
         {
-            link: "",
+            link: "behance.net/timiyoung",
             icon: Be,
         },
         {
@@ -88,7 +88,7 @@ const Footer = () => {
     return (
         <footer ref={ref} className="bg-[#000000] pt-20 w-full flex flex-col items-center justify-center overflow-hidden">
             <motion.div
-                className="flex items-center justify-center gap-6 flex-wrap"
+                className="flex items-center justify-center gap-6 px-4 flex-wrap"
                 variants={containerVariants}
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}

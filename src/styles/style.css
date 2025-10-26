@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Youth';
-    src: url('../assets/fonts/Youth.ttf') format('truetype');
+    src: url('../assets/fonts/Youth.otf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -14,6 +14,10 @@
         scroll-behavior: smooth;
         font-family: 'Youth', system-ui, sans-serif;
     }
+}
+
+.font-ppnm {
+    font-family: PP Neue Montreal;
 }
 
 .no-scroll {
@@ -239,6 +243,7 @@ input[type="checkbox"]:checked::before {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    background-color: #F9F9F9;
     justify-content: flex-start;
 }
 
