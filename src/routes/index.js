@@ -1,6 +1,6 @@
 const home = "/"
 const about = "/about"
-const work = "/work"
+const work = "/works"
 const workdetails = "/works/:id"
 const contact = "/contact"
 

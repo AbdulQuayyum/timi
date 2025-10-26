@@ -280,7 +280,7 @@ const Loader = () => {
     };
 
     return (
-        <div className="flex min-h-screen w-full items-center justify-center bg-gradient-to-br from-[#F7F7F7] via-[#FFFFFF] to-[#F7F7F7] overflow-hidden">
+        <div className="flex min-h-screen w-full items-center justify-center bg-linear-to-br from-[#F7F7F7] via-[#FFFFFF] to-[#F7F7F7] overflow-hidden">
             <div className="relative">
                 {/* Background animated dots */}
                 <motion.div
@@ -369,7 +369,7 @@ const Loader = () => {
 
                     {/* Bottom line animation */}
                     <motion.div
-                        className="w-32 h-1 mx-auto rounded-full bg-gradient-to-r from-transparent via-[#FF0000] to-transparent"
+                        className="w-32 h-1 mx-auto rounded-full bg-linear-to-r from-transparent via-[#FF0000] to-transparent"
                         initial={{ scaleX: 0, opacity: 0 }}
                         animate={{
                             scaleX: [0, 1, 0],

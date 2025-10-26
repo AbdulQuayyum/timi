@@ -10,7 +10,7 @@ const GeneralLayout = () => {
             <ScrollToTop />
             <div className="layout">
                 <Header />
-                <div className="w-full flex-1 min-h-screen flex items-center justify-center pt-24">
+                <div className="w-full flex-1 flex flex-col items-start justify-start pt-24">
                     <ScrollRestoration />
                     <Outlet />
                 </div>
