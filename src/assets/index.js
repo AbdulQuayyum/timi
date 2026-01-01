@@ -22,8 +22,60 @@ import work11 from "./images/work-11.png"
 import work12 from "./images/work-12.png"
 import work13 from "./images/work-13.png"
 
+import marsone01 from "./images/marsone/01.png"
+import marsone02 from "./images/marsone/02.png"
+import marsone03 from "./images/marsone/03.png"
+import marsone04 from "./images/marsone/04.jpg"
+import marsone05 from "./images/marsone/05.png"
+import marsone06 from "./images/marsone/06.png"
+import marsone07 from "./images/marsone/07.png"
+import marsone08 from "./images/marsone/08.png"
+import marsone09 from "./images/marsone/09.png"
+import marsone10 from "./images/marsone/10.png"
+import marsone11 from "./images/marsone/11.png"
+import marsone12 from "./images/marsone/12.png"
+import marsone13 from "./images/marsone/13.png"
+import marsone14 from "./images/marsone/14.png"
+import marsone15 from "./images/marsone/15.png"
+import marsone16 from "./images/marsone/16.png"
+import marsone17 from "./images/marsone/17.png"
+import marsone18 from "./images/marsone/18.png"
+import marsone19 from "./images/marsone/19.png"
+
+import zenthom01 from "./images/zenthom/01.png"
+import zenthom02 from "./images/zenthom/02.png"
+import zenthom03 from "./images/zenthom/03.png"
+import zenthom04 from "./images/zenthom/04.png"
+import zenthom05 from "./images/zenthom/05.png"
+import zenthom06 from "./images/zenthom/06.png"
+import zenthom07 from "./images/zenthom/07.png"
+import zenthom08 from "./images/zenthom/08.png"
+
+import ologe01 from "./images/ologe/01.png"
+import ologe02 from "./images/ologe/02.png"
+import ologe03 from "./images/ologe/03.png"
+import ologe04 from "./images/ologe/04.png"
+import ologe05 from "./images/ologe/05.png"
+import ologe06 from "./images/ologe/06.png"
+import ologe07 from "./images/ologe/07.png"
+import ologe08 from "./images/ologe/08.png"
+import ologe09 from "./images/ologe/09.png"
+import ologe10 from "./images/ologe/10.png"
+import ologe11 from "./images/ologe/11.png"
+import ologe12 from "./images/ologe/12.png"
+import ologe13 from "./images/ologe/13.png"
+import ologe14 from "./images/ologe/14.png"
+import ologe15 from "./images/ologe/15.png"
+import ologe16 from "./images/ologe/16.png"
+import ologe17 from "./images/ologe/17.png"
+import ologe18 from "./images/ologe/18.png"
+
+
 export default {
     hero01, hero02, hero03, hero04, hero05,
     profile, timiyoung, ty,
-    work01, work02, work03, work04, work05, work06, work07, work08, work09, work10, work11, work12, work13
+    work01, work02, work03, work04, work05, work06, work07, work08, work09, work10, work11, work12, work13,
+    marsone01, marsone02, marsone03, marsone04, marsone05, marsone06, marsone07, marsone08, marsone09, marsone10, marsone11, marsone12, marsone13, marsone14, marsone15, marsone16, marsone17, marsone18, marsone19,
+    zenthom01, zenthom02, zenthom03, zenthom04, zenthom05, zenthom06, zenthom07, zenthom08,
+    ologe01, ologe02, ologe03, ologe04, ologe05, ologe06, ologe07, ologe08, ologe09, ologe10, ologe11, ologe12, ologe13, ologe14, ologe15, ologe16, ologe17, ologe18
 }
