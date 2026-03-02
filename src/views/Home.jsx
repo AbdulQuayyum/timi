@@ -304,7 +304,7 @@ const HomePage = () => {
                                     className="rounded-full flex items-center justify-center bg-[#6ACDFF] p-2 text-sm text-[#000000] mb-2"
                                     whileHover={{ scale: 1.05, backgroundColor: "#6ACDFF", color: "#FFFFFF" }}
                                 >
-                                    website
+                                    Website
                                 </motion.span>
                                 <span className="text-[#000000] font-black text-[24px] sm:text-[40px] tracking-tight">
                                     Marsone
@@ -371,10 +371,11 @@ const HomePage = () => {
                                 <div className="flex w-full items-start justify-between">
                                     <div className="flex flex-col items-start justify-start w-full flex-1 max-w-[80%] gap-1">
                                         <motion.span
-                                            className="rounded-lg flex items-center justify-center bg-[#EDEDED] p-2 text-sm text-[#000000] mb-2"
-                                            whileHover={{ scale: 1.05, backgroundColor: "#000000", color: "#FFFFFF" }}
+                                            className="rounded-full flex items-center justify-center p-2 text-sm text-[#000000] mb-2"
+                                            style={{ backgroundColor: work.name === "StoreDash" ? "#D0FF00" : "#6ACDFF" }}
+                                            whileHover={{ scale: 1.05, backgroundColor: work.name === "StoreDash" ? "#D0FF00" : "#6ACDFF", color: "#FFFFFF" }}
                                         >
-                                            website
+                                            {work.name === "StoreDash" ? "App" : "Website"}
                                         </motion.span>
                                         <span className="text-[#000000] font-black text-[24px] sm:text-[40px] tracking-tight">
                                             {work.name}
@@ -443,10 +444,11 @@ const HomePage = () => {
                                 <div className="flex w-full items-start justify-between">
                                     <div className="flex flex-col items-start justify-start w-full flex-1 max-w-[80%] gap-1">
                                         <motion.span
-                                            className="rounded-lg flex items-center justify-center bg-[#EDEDED] p-2 text-sm text-[#000000] mb-2"
-                                            whileHover={{ scale: 1.05, backgroundColor: "#000000", color: "#FFFFFF" }}
+                                            className="rounded-full flex items-center justify-center p-2 text-sm text-[#000000] mb-2"
+                                            style={{ backgroundColor: work.name === "Ologrey" ? "#6ACDFF" : "#E2C5FF" }}
+                                            whileHover={{ scale: 1.05, backgroundColor: work.name === "Ologrey" ? "#6ACDFF" : "#E2C5FF", color: "#FFFFFF" }}
                                         >
-                                            website
+                                            {work.name === "Ologrey" ? "Website" : "Web & App"}
                                         </motion.span>
                                         <span className="text-[#000000] font-black text-[24px] sm:text-[40px] tracking-tight">
                                             {work.name}
