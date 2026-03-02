@@ -1,11 +1,12 @@
-import { SEOConfig } from "@/utilities/SEOConfig"
-import { SEOHelmet } from "@/components"
 import assets from "@/assets";
+import { SEOHelmet } from "@/components";
+import routes from "@/routes";
+import { SEOConfig } from "@/utilities/SEOConfig";
+import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft2, ArrowRight2 } from "iconsax-reactjs";
 import { ArrowUpRight } from "lucide-react";
-import { Link } from "react-router";
-import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { Link, useNavigate } from "react-router";
 
 const testimoniallist = [
     {
@@ -36,6 +37,7 @@ const testimoniallist = [
 
 const HomePage = () => {
     const pageSEO = SEOConfig.pages.home;
+    const navigate = useNavigate()
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const nextTestimonial = () => {
@@ -157,6 +159,20 @@ const HomePage = () => {
         })
     };
 
+    const heroSlides = [
+        assets.hero01,
+        assets.marsone03,
+        assets.ologe03,
+        assets.zenthom03,
+        assets.work13,
+        assets.work05,
+        assets.work02,
+        assets.work04,
+        assets.hero04
+    ];
+
+    const infiniteSlides = [...heroSlides, ...heroSlides];
+
     return (
         <>
             <SEOHelmet title={pageSEO.title} description={pageSEO.description} keywords={pageSEO.keywords} canonical={pageSEO.canonical} />
@@ -182,19 +198,42 @@ const HomePage = () => {
                     >
                         Product Designer, Front-End Developer and Graphics Designer
                     </motion.span>
+                </motion.div>
+                <motion.div
+                    className="w-full overflow-hidden"
+                    variants={imageVariants}
+                >
                     <motion.div
-                        className="w-full h-[400px] mt-11 bg-[#F9F9F9] sm:h-[681px] rounded-lg overflow-hidden"
-                        variants={imageVariants}
-                        whileHover={{ scale: 1.02 }}
-                        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                        className="flex gap-6"
+                        animate={{
+                            x: ["0%", "-50%"]
+                        }}
+                        transition={{
+                            ease: "linear",
+                            duration: 25,
+                            repeat: Infinity
+                        }}
                     >
-                        <motion.img
-                            src={assets.hero01}
-                            className="w-full h-full object-cover"
-                            alt=""
-                            whileHover={{ scale: 1.05 }}
-                            transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                        />
+                        {infiniteSlides.map((img, index) => (
+                            <div
+                                key={index}
+                                className="
+                min-w-[623px]
+                h-[330px]
+                sm:h-[400px]
+                rounded-2xl
+                overflow-hidden
+                bg-[#F9F9F9]
+                shrink-0
+                "
+                            >
+                                <img
+                                    src={img}
+                                    className="w-full h-full object-cover"
+                                    alt=""
+                                />
+                            </div>
+                        ))}
                     </motion.div>
                 </motion.div>
 
@@ -206,19 +245,35 @@ const HomePage = () => {
                     viewport={{ once: true, amount: 0.2 }}
                     variants={cardVariants}
                 >
-                    <motion.h2
-                        className="text-[#1F1F1F] mb-5 font-black text-center text-[48px] sm:text-[80px] tracking-tight leading-[100%]"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ type: "spring", stiffness: 120, damping: 15 }}
-                    >
-                        Featured Work
-                    </motion.h2>
+                    <div className="flex w-full justify-between items-center">
+                        <motion.h2
+                            className="text-[#1F1F1F] mb-5 font-black text-center text-[48px] sm:text-[80px] tracking-tight leading-[100%]"
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ type: "spring", stiffness: 120, damping: 15 }}
+                        >
+                            Featured Work
+                        </motion.h2>
+                        <motion.button
+                            onClick={() => { navigate(routes.work) }}
+                            className="bg-[#F6F6F6] rounded-full py-4 px-6 flex items-center justify-center text-[#1F1F1F]"
+                            style={{
+                                boxShadow: "-1px -1px 4px 0px #00000040 inset"
+                            }}
+                            whileHover={{
+                                scale: 1.05,
+                                boxShadow: "0 10px 25px rgba(0, 0, 0, 0.25)",
+                                transition: { duration: 0.2 }
+                            }}
+                            whileTap={{ scale: 0.95 }}>
+                            View All Works
+                        </motion.button>
+                    </div>
 
                     {/* Large Featured Card */}
                     <motion.div
-                        className="flex flex-col items-start justify-between gap-9 w-full bg-white p-5 rounded-4xl group cursor-pointer"
+                        className="flex flex-col md:flex-row w-full items-start md:items-center justify-between gap-9 w-full bg-white p-5 rounded-4xl group cursor-pointer"
                         style={{ boxShadow: "2px 4px 48px 0px #0000000A" }}
                         custom={0}
                         variants={workCardVariants}
@@ -232,22 +287,22 @@ const HomePage = () => {
                         }}
                     >
                         <motion.div
-                            className="flex-1 flex items-center justify-center w-full overflow-hidden bg-[#F7F7F7] rounded-4xl"
+                            className="flex-1 flex min-h-90 w-full md:w-1/2 h-full items-center justify-center overflow-hidden bg-[#F7F7F7] rounded-4xl"
                             whileHover={{ scale: 1.02 }}
                         >
                             <motion.img
                                 src={assets.hero02}
-                                className="w-full h-full object-cover"
+                                className="w-full min-h-90 h-full object-cover"
                                 alt=""
                                 whileHover={{ scale: 1.1 }}
                                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
                             />
                         </motion.div>
-                        <div className="flex w-full items-start justify-between">
+                        <div className="flex w-full md:w-1/2  items-start justify-between">
                             <div className="flex flex-col items-start justify-start w-full flex-1 max-w-[80%] gap-1">
                                 <motion.span
-                                    className="rounded-lg flex items-center justify-center bg-[#EDEDED] p-2 text-sm text-[#000000] mb-2"
-                                    whileHover={{ scale: 1.05, backgroundColor: "#000000", color: "#FFFFFF" }}
+                                    className="rounded-full flex items-center justify-center bg-[#6ACDFF] p-2 text-sm text-[#000000] mb-2"
+                                    whileHover={{ scale: 1.05, backgroundColor: "#6ACDFF", color: "#FFFFFF" }}
                                 >
                                     website
                                 </motion.span>
@@ -346,7 +401,7 @@ const HomePage = () => {
                         ))}
                     </motion.div>
 
-                    {/* Additional Grid */}
+                    {/* Grid Cards */}
                     <motion.div
                         className="grid grid-cols-1 md:grid-cols-2 w-full max-w-[1288px] gap-6"
                         initial="hidden"
@@ -354,116 +409,124 @@ const HomePage = () => {
                         viewport={{ once: true, amount: 0.2 }}
                         variants={{
                             visible: {
-                                transition: { staggerChildren: 0.1, delayChildren: 0.2 }
+                                transition: { staggerChildren: 0.1 }
                             }
                         }}
                     >
-                        <motion.div
-                            className="flex flex-col items-start justify-between gap-9 w-full bg-white p-5 rounded-4xl group cursor-pointer"
-                            style={{ boxShadow: "2px 4px 48px 0px #0000000A" }}
-                            custom={3}
-                            variants={workCardVariants}
-                            whileHover={{ y: -10, boxShadow: "2px 8px 60px 0px #00000015" }}
-                        >
+                        {[
+                            { img: assets.hero04, name: "Ologrey", link: "/works/ologrey" },
+                            { img: assets.work05, name: "Shopp", link: "/works/shopp" }
+                        ].map((work, index) => (
                             <motion.div
-                                className="flex-1 flex items-center justify-center w-full overflow-hidden bg-[#F7F7F7] rounded-4xl"
-                                whileHover={{ scale: 1.02 }}
+                                key={index}
+                                className="flex flex-col items-start justify-between gap-9 w-full bg-white p-5 rounded-4xl group cursor-pointer"
+                                style={{ boxShadow: "2px 4px 48px 0px #0000000A" }}
+                                custom={index + 1}
+                                variants={workCardVariants}
+                                whileHover={{
+                                    y: -10,
+                                    boxShadow: "2px 8px 60px 0px #00000015"
+                                }}
                             >
-                                <motion.img
-                                    src={assets.hero04}
-                                    className="w-full h-full object-cover"
-                                    alt=""
-                                    whileHover={{ scale: 1.1 }}
-                                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                                />
-                            </motion.div>
-                            <div className="flex w-full items-start justify-between">
-                                <div className="flex flex-col items-start justify-start w-full flex-1 max-w-[80%] gap-1">
-                                    <motion.span
-                                        className="rounded-lg flex items-center justify-center bg-[#EDEDED] p-2 text-sm text-[#000000] mb-2"
-                                        whileHover={{ scale: 1.05, backgroundColor: "#000000", color: "#FFFFFF" }}
-                                    >
-                                        website
-                                    </motion.span>
-                                    <span className="text-[#000000] font-black text-[24px] sm:text-[40px] tracking-tight">
-                                        Ologrey
-                                    </span>
-                                    <span className="text-[#000000] font-light text-[15px] sm:text-[17px] tracking-tight">
-                                        I did the product design
-                                    </span>
-                                </div>
-                                <Link to='/works/ologrey'>
-                                    <motion.div
-                                        className="h-14 w-14 flex items-center justify-center rounded-full bg-[#000000]"
-                                        whileHover={{
-                                            scale: 1.1,
-                                            backgroundColor: "#FF0000",
-                                            rotate: 45
-                                        }}
-                                        whileTap={{ scale: 0.9 }}
-                                    >
-                                        <ArrowUpRight className="h-7 w-7 text-[#FFFFFF]" />
-                                    </motion.div>
-                                </Link>
-                            </div>
-                        </motion.div>
-
-                        <div className="flex flex-col gap-6">
-                            {[
-                                { img: assets.work12, name: "Shopp", link: "/works/shopp" },
-                                { img: assets.work04, name: "Zenthom Solution", link: "/works/zenthom" }
-                            ].map((work, index) => (
                                 <motion.div
-                                    key={index}
-                                    className="flex flex-col items-start justify-between gap-9 w-full bg-white p-5 rounded-4xl group cursor-pointer"
-                                    style={{ boxShadow: "2px 4px 48px 0px #0000000A" }}
-                                    custom={4 + index}
-                                    variants={workCardVariants}
-                                    whileHover={{ y: -10, boxShadow: "2px 8px 60px 0px #00000015" }}
+                                    className="flex-1 flex items-center justify-center w-full overflow-hidden bg-[#F7F7F7] rounded-4xl"
+                                    whileHover={{ scale: 1.02 }}
                                 >
-                                    <motion.div
-                                        className="flex-1 flex items-center justify-center w-full overflow-hidden bg-[#F7F7F7] rounded-4xl"
-                                        whileHover={{ scale: 1.02 }}
-                                    >
-                                        <motion.img
-                                            src={work.img}
-                                            className="w-full h-full object-cover"
-                                            alt=""
-                                            whileHover={{ scale: 1.1 }}
-                                            transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                                        />
-                                    </motion.div>
-                                    <div className="flex w-full items-start justify-between">
-                                        <div className="flex flex-col items-start justify-start w-full flex-1 max-w-[80%] gap-1">
-                                            <motion.span
-                                                className="rounded-lg flex items-center justify-center bg-[#EDEDED] p-2 text-sm text-[#000000] mb-2"
-                                                whileHover={{ scale: 1.05, backgroundColor: "#000000", color: "#FFFFFF" }}
-                                            >
-                                                website
-                                            </motion.span>
-                                            <span className="text-[#000000] font-black text-[24px] sm:text-[40px] tracking-tight">
-                                                {work.name}
-                                            </span>
-                                            <span className="text-[#000000] font-light text-[15px] sm:text-[17px] tracking-tight">
-                                                I did the product design
-                                            </span>
-                                        </div>
-                                        <Link to={work.link}>
-                                            <motion.div
-                                                className="h-14 w-14 flex items-center justify-center rounded-full bg-[#000000]"
-                                                whileHover={{
-                                                    scale: 1.1,
-                                                    backgroundColor: "#FF0000",
-                                                    rotate: 45
-                                                }}
-                                                whileTap={{ scale: 0.9 }}
-                                            >
-                                                <ArrowUpRight className="h-7 w-7 text-[#FFFFFF]" />
-                                            </motion.div>
-                                        </Link>
-                                    </div>
+                                    <motion.img
+                                        src={work.img}
+                                        className="w-full h-full object-cover"
+                                        alt=""
+                                        whileHover={{ scale: 1.1 }}
+                                        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                                    />
                                 </motion.div>
-                            ))}
+                                <div className="flex w-full items-start justify-between">
+                                    <div className="flex flex-col items-start justify-start w-full flex-1 max-w-[80%] gap-1">
+                                        <motion.span
+                                            className="rounded-lg flex items-center justify-center bg-[#EDEDED] p-2 text-sm text-[#000000] mb-2"
+                                            whileHover={{ scale: 1.05, backgroundColor: "#000000", color: "#FFFFFF" }}
+                                        >
+                                            website
+                                        </motion.span>
+                                        <span className="text-[#000000] font-black text-[24px] sm:text-[40px] tracking-tight">
+                                            {work.name}
+                                        </span>
+                                        <span className="text-[#000000] font-light text-[15px] sm:text-[17px] tracking-tight">
+                                            I did the product design
+                                        </span>
+                                    </div>
+                                    <Link to={work.link}>
+                                        <motion.div
+                                            className="h-14 w-14 flex items-center justify-center rounded-full bg-[#000000]"
+                                            whileHover={{
+                                                scale: 1.1,
+                                                backgroundColor: "#FF0000",
+                                                rotate: 45
+                                            }}
+                                            whileTap={{ scale: 0.9 }}
+                                        >
+                                            <ArrowUpRight className="h-7 w-7 text-[#FFFFFF]" />
+                                        </motion.div>
+                                    </Link>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+                    {/* Large Featured Card */}
+                    <motion.div
+                        className="flex flex-col md:flex-row w-full items-start md:items-center justify-between gap-9 w-full bg-white p-5 rounded-4xl group cursor-pointer"
+                        style={{ boxShadow: "2px 4px 48px 0px #0000000A" }}
+                        custom={0}
+                        variants={workCardVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        whileHover={{
+                            y: -10,
+                            boxShadow: "2px 8px 60px 0px #00000015",
+                            transition: { type: "spring", stiffness: 300, damping: 20 }
+                        }}
+                    >
+                        <motion.div
+                            className="flex-1 flex min-h-90 w-full md:w-1/2 h-full items-center justify-center overflow-hidden bg-[#F7F7F7] rounded-4xl"
+                            whileHover={{ scale: 1.02 }}
+                        >
+                            <motion.img
+                                src={assets.work04}
+                                className="w-full min-h-90 h-full object-cover"
+                                alt=""
+                                whileHover={{ scale: 1.1 }}
+                                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                            />
+                        </motion.div>
+                        <div className="flex w-full md:w-1/2  items-start justify-between">
+                            <div className="flex flex-col items-start justify-start w-full flex-1 max-w-[80%] gap-1">
+                                <motion.span
+                                    className="rounded-full flex items-center justify-center bg-[#6ACDFF] p-2 text-sm text-[#000000] mb-2"
+                                    whileHover={{ scale: 1.05, backgroundColor: "#6ACDFF", color: "#FFFFFF" }}
+                                >
+                                    website
+                                </motion.span>
+                                <span className="text-[#000000] font-black text-[24px] sm:text-[40px] tracking-tight">
+                                    Zenthom
+                                </span>
+                                <span className="text-[#000000] font-light text-[15px] sm:text-[17px] tracking-tight">
+                                    I did the product design
+                                </span>
+                            </div>
+                            <Link to='/works/zenthom'>
+                                <motion.div
+                                    className="h-14 w-14 flex items-center justify-center rounded-full bg-[#000000]"
+                                    whileHover={{
+                                        scale: 1.1,
+                                        backgroundColor: "#FF0000",
+                                        rotate: 45
+                                    }}
+                                    whileTap={{ scale: 0.9 }}
+                                >
+                                    <ArrowUpRight className="h-7 w-7 text-[#FFFFFF]" />
+                                </motion.div>
+                            </Link>
                         </div>
                     </motion.div>
                 </motion.div>
