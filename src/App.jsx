@@ -1,17 +1,16 @@
-import { lazy } from 'react';
-import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router';
 import { HelmetProvider } from 'react-helmet-async';
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router';
 
 import { ErrorPage, NotFoundPage, WithSuspense } from "./utilities/ErrorComponent";
 
 import GeneralLayout from '@/layouts/general.layout';
 import routes from './routes';
 
-const HomePage = WithSuspense(lazy(() => import('./views/Home')))
-const ContactPage = WithSuspense(lazy(() => import('./views/Contact')))
-const AboutPage = WithSuspense(lazy(() => import('./views/About')))
-const WorksPage = WithSuspense(lazy(() => import('./views/Works')))
-const WorkDetailsPage = WithSuspense(lazy(() => import('./views/WorkDetails')))
+import AboutPage from '@/views/About';
+import ContactPage from '@/views/Contact';
+import HomePage from '@/views/Home';
+import WorkDetailsPage from '@/views/WorkDetails';
+import WorksPage from '@/views/Works';
 const NotFoundPageWithSuspense = WithSuspense(NotFoundPage);
 
 function App() {
